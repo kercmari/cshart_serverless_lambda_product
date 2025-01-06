@@ -136,7 +136,8 @@ Infraestructura Utilizada
 - API Gateway: Maneja las solicitudes HTTP y redirige a AWS Lambda.
 - AWS Lambda: Ejecuta la lógica de la API en .NET 8.
 -almacenamiento adicional, puede integrarse fácilmente.
-![alt text](image-1.png)
+
+- ![alt text](image.png)
 
 > [!NOTE]  
 > Hay un archivo collections.json para importar en postman y hacer pruebas del servicio despelgado
