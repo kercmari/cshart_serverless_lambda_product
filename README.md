@@ -1,13 +1,13 @@
 ###  MiProyecto API
 
-API desarrollada en .NET 8 para gestionar productos. Esta API permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre productos y est· diseÒada para ejecutarse localmente o como un servicio serverless en AWS utilizando API Gateway y Lambda.
+API desarrollada en .NET 8 para gestionar productos. Esta API permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre productos y est√° dise√±ada para ejecutarse localmente o como un servicio serverless en AWS utilizando API Gateway y Lambda.
 
 Tabla de Contenidos
 
 - Requisitos Previos
-- CÛmo Inicializar Localmente
+- C√≥mo Inicializar Localmente
 - Despliegue en AWS Serverless
-- DocumentaciÛn de Endpoints
+- Documentaci√≥n de Endpoints
 
 
 #### Requisitos Previos
@@ -16,14 +16,14 @@ Tabla de Contenidos
 2. Docker (opcional para pruebas locales en contenedor).
 
 
-CÛmo Inicializar Localmente
+C√≥mo Inicializar Localmente
 
-##### OpciÛn 1: EjecuciÛn Directa
+##### Opci√≥n 1: Ejecuci√≥n Directa
 
 1. Clona el repositorio:
 
     ```
-    git clone https://github.com/tu-usuario/mi-proyecto.git cd mi-proyecto
+    git clone https://github.com/kercmari/cshart_serverless_lambda_product.git cd cshart_serverless_lambda_product
     ```
 
 2. Restaura las dependencias y compila el proyecto:
@@ -38,7 +38,7 @@ CÛmo Inicializar Localmente
     ```
 
 
-##### OpciÛn 2: Usar Docker
+##### Opci√≥n 2: Usar Docker
 
 1. Construye y ejecuta el contenedor con Docker:
 
@@ -46,10 +46,10 @@ CÛmo Inicializar Localmente
     docker-compose up --build
     ```
 
-La API estar· disponible en:
+La API estar√° disponible en:
 
 - Base URL: `http://localhost:5227`
-- DocumentaciÛn Swagger: `http://localhost:5227/swagger`
+- Documentaci√≥n Swagger: `http://localhost:5227/swagger`
 
 #### Endpoints
 
@@ -61,12 +61,12 @@ Base URL
 Endpoints
 
 1. Obtener Producto por ID
-    - DescripciÛn: Devuelve un producto especÌfico por su ID.
-    - MÈtodo: GET
+    - Descripci√≥n: Devuelve un producto espec√≠fico por su ID.
+    - M√©todo: GET
     - URL: /api/Product/{id}
     - Respuesta Exitosa (200):
         ```json
-        { "id": 1, "name": "Producto 1", "description": "DescripciÛn del producto", "price": 19.99, "stock": 50 }
+        { "id": 1, "name": "Producto 1", "description": "Descripci√≥n del producto", "price": 19.99, "stock": 50 }
         ```
     -  Respuesta No Encontrada (404):
         ```json
@@ -74,47 +74,47 @@ Endpoints
         ```
 2. Obtener Todos los Productos
 
-    - DescripciÛn: Devuelve una lista de todos los productos.
-    - MÈtodo: GET
+    - Descripci√≥n: Devuelve una lista de todos los productos.
+    - M√©todo: GET
     - URL: /api/Product
     - Respuesta Exitosa (200)
         ```json 
-        [ { "id": 1, "name": "Producto 1", "description": "DescripciÛn del producto", "price": 19.99, "stock": 50 }, { "id": 2, "name": "Producto 2", "description": "Otro producto", "price": 29.99, "stock": 30 } ]
+        [ { "id": 1, "name": "Producto 1", "description": "Descripci√≥n del producto", "price": 19.99, "stock": 50 }, { "id": 2, "name": "Producto 2", "description": "Otro producto", "price": 29.99, "stock": 30 } ]
 
 3. Crear un Producto
 
-    - DescripciÛn: Crea un nuevo producto.
-    - MÈtodo: POST
+    - Descripci√≥n: Crea un nuevo producto.
+    - M√©todo: POST
     - URL: /api/Product
     - Cuerpo de la Solicitud:
         ```json
-        { "name": "Producto Nuevo", "description": "DescripciÛn del producto", "price": 19.99, "stock": 100 }
+        { "name": "Producto Nuevo", "description": "Descripci√≥n del producto", "price": 19.99, "stock": 100 }
         ```
 
     - Respuesta Exitosa (201):
         ```json
-        { "id": 3, "name": "Producto Nuevo", "description": "DescripciÛn del producto", "price": 19.99, "stock": 100 }
+        { "id": 3, "name": "Producto Nuevo", "description": "Descripci√≥n del producto", "price": 19.99, "stock": 100 }
         ```
 
 
 4. Actualizar un Producto
 
-    - DescripciÛn: Actualiza la informaciÛn de un producto existente.
-    - MÈtodo: PUT
+    - Descripci√≥n: Actualiza la informaci√≥n de un producto existente.
+    - M√©todo: PUT
     - URL: /api/Product/{id}
     - Cuerpo de la Solicitud:
         ```json
-        { "name": "Producto Actualizado", "description": "DescripciÛn actualizada", "price": 29.99, "stock": 50 }
+        { "name": "Producto Actualizado", "description": "Descripci√≥n actualizada", "price": 29.99, "stock": 50 }
         ```
 
     - Respuesta Exitosa (200):
         ```json
-        { "message": "Producto actualizado exitosamente.", "existingProduct": { "id": 1, "name": "Producto Actualizado", "description": "DescripciÛn actualizada", "price": 29.99, "stock": 50 } }
+        { "message": "Producto actualizado exitosamente.", "existingProduct": { "id": 1, "name": "Producto Actualizado", "description": "Descripci√≥n actualizada", "price": 29.99, "stock": 50 } }
     ```
 
 5. Eliminar un Producto
-    - DescripciÛn: Elimina un producto por su ID.
-    - MÈtodo: DELETE
+    - Descripci√≥n: Elimina un producto por su ID.
+    - M√©todo: DELETE
     - URL: /api/Product/{id}
     - Respuesta Exitosa (200):
 
@@ -126,7 +126,7 @@ Endpoints
 
 #### Despliegue en AWS Serverless
 
-La API se encuentra desplegada como un servicio serverless en AWS Lambda utilizando API Gateway. Puedes acceder a la API y su documentaciÛn interactiva Swagger en:
+La API se encuentra desplegada como un servicio serverless en AWS Lambda utilizando API Gateway. Puedes acceder a la API y su documentaci√≥n interactiva Swagger en:
 
 - Base URL: `https://jiea20ag80.execute-api.us-east-1.amazonaws.com`
 - Swagger: `https://jiea20ag80.execute-api.us-east-1.amazonaws.com/swagger/index.html`
@@ -134,8 +134,8 @@ La API se encuentra desplegada como un servicio serverless en AWS Lambda utiliza
 Infraestructura Utilizada
 
 - API Gateway: Maneja las solicitudes HTTP y redirige a AWS Lambda.
-- AWS Lambda: Ejecuta la lÛgica de la API en .NET 8.
--almacenamiento adicional, puede integrarse f·cilmente.
+- AWS Lambda: Ejecuta la l√≥gica de la API en .NET 8.
+-almacenamiento adicional, puede integrarse f√°cilmente.
 
 - ![alt text](image.png)
 
