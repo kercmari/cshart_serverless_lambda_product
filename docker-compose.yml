@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5227:5227" # HTTP
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    container_name: my-api-container

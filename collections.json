@@ -1,0 +1,120 @@
+{
+  "info": {
+    "name": "MiProyecto API",
+    "description": "Colección de Postman para probar los servicios de ProductController.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Obtener producto por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Product/:id",
+          "host": [ "{{baseUrl}}" ],
+          "path": [ "api", "Product", ":id" ],
+          "variable": [
+            {
+              "key": "id",
+              "description": "ID del producto a buscar.",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Obtiene un producto por su ID."
+      }
+    },
+    {
+      "name": "Obtener todos los productos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Product",
+          "host": [ "{{baseUrl}}" ],
+          "path": [ "api", "Product" ]
+        },
+        "description": "Obtiene una lista de todos los productos."
+      }
+    },
+    {
+      "name": "Crear un producto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Producto Nuevo\",\n  \"description\": \"Descripción del producto\",\n  \"price\": 19.99,\n  \"stock\": 100\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Product",
+          "host": [ "{{baseUrl}}" ],
+          "path": [ "api", "Product" ]
+        },
+        "description": "Crea un nuevo producto en el sistema."
+      }
+    },
+    {
+      "name": "Actualizar un producto",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Producto Actualizado\",\n  \"description\": \"Descripción actualizada\",\n  \"price\": 29.99,\n  \"stock\": 50\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Product/:id",
+          "host": [ "{{baseUrl}}" ],
+          "path": [ "api", "Product", ":id" ],
+          "variable": [
+            {
+              "key": "id",
+              "description": "ID del producto a actualizar.",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Actualiza un producto existente en el sistema."
+      }
+    },
+    {
+      "name": "Eliminar un producto",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Product/:id",
+          "host": [ "{{baseUrl}}" ],
+          "path": [ "api", "Product", ":id" ],
+          "variable": [
+            {
+              "key": "id",
+              "description": "ID del producto a eliminar.",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Elimina un producto por su ID."
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://jiea20ag80.execute-api.us-east-1.amazonaws.com",
+      "description": "La URL base de la API desplegada."
+    }
+  ]
+}

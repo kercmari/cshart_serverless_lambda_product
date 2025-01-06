@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless .NET 8 API usando ZIP + Swagger
+
+Resources:
+  MyDotNetFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      # Indica que es ZIP
+      PackageType: Zip
+      # Indica dónde está tu proyecto principal (la carpeta con .csproj y Program.cs)
+      CodeUri: ./MiProyecto/
+
+      # El runtime de .NET 8
+      Runtime: dotnet8
+
+      # Handler = <AssemblyName>::<Namespace.ClassLambdaEntryPoint>::FunctionHandlerAsync
+      # Si usas la plantilla de Amazon.Lambda.AspNetCoreServer,
+      # a menudo el Handler se define como "<ProjectName>"
+      Handler: Api
+
+      # Memoria y tiempo, ajusta según tu API
+      MemorySize: 1024
+      Timeout: 30
+
+      # Variables de entorno (por ejemplo, si quieres forzar Development para Swagger)
+      Environment:
+        Variables:
+          ASPNETCORE_ENVIRONMENT: Development
+
+      # Aquí defines eventos (API Gateway) en modo HttpApi o RestApi
+      Events:
+        ApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+
+Outputs:
+  ApiUrl:
+    Description: La URL base de tu API
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/"

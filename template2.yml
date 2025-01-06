@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Despliegue Lambda con Docker (.NET 8) + Swagger
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+    Tracing: Active
+  Api:
+    EndpointConfiguration: REGIONAL
+    TracingEnabled: true
+    Cors:
+      AllowMethods: "'*'"
+      AllowHeaders: "'*'"
+      AllowOrigin: "'*'"
+      MaxAge: "'86400'"
+
+Resources:
+  MyApiGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+
+  MyProjectApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: MyProjectApi
+      PackageType: Image
+      ImageUri: 647600089681.dkr.ecr.us-east-1.amazonaws.com/api:latest
+      Events:
+        ProxyApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApiGateway
+            Path: /{proxy+}
+            Method: ANY
+        SwaggerUI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApiGateway
+            Path: /swagger/{proxy+}
+            Method: ANY
+
+Outputs:
+  ApiUrl:
+    Description: URL base de la API
+    Value: !Sub "https://${MyApiGateway}.execute-api.${AWS::Region}.amazonaws.com/Prod"
