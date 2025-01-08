@@ -143,3 +143,9 @@ Infraestructura Utilizada
 > Hay un archivo collections.json para importar en postman y hacer pruebas del servicio despelgado
 
 ![alt text](image-1.png)
+
+
+### Ejecutar migracion 
+> dotnet ef migrations add InitialMigration --project ./Infrastructure/Infrastructure.csproj --startup-project ./MiProyecto/Api.csproj
+> dotnet ef database update --project ./Infrastructure/Infrastructure.csproj --startup-project ./MiProyecto/Api.csproj
+
